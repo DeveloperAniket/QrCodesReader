@@ -52,4 +52,4 @@ jobs:
           app-name: 'QRCodesRead'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_02E6F389881144629C095D7B46281598 }}
-          package: .
+          package: ./dist/zxing-scanner-demo
