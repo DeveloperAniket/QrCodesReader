@@ -13,6 +13,7 @@ export class AppComponent {
   availableDevices: MediaDeviceInfo[];
   deviceCurrent: MediaDeviceInfo;
   deviceSelected: string;
+  showScanner = true;
 
   formatsEnabled: BarcodeFormat[] = [
     BarcodeFormat.CODE_128,
@@ -34,6 +35,7 @@ export class AppComponent {
 
   clearResult(): void {
     this.qrResultString = null;
+    this.showScanner = true;
   }
 
   onCamerasFound(devices: MediaDeviceInfo[]): void {
@@ -42,7 +44,11 @@ export class AppComponent {
   }
 
   onCodeResult(resultString: string) {
-    this.qrResultString = resultString;
+    console.log(JSON.parse(resultString));
+    if (resultString) {
+      this.qrResultString = resultString
+      this.showScanner = false;
+    }
   }
 
   onDeviceSelectChange(selected: string) {
@@ -64,7 +70,6 @@ export class AppComponent {
   onHasPermission(has: boolean) {
     this.hasPermission = has;
   }
- 
 
   onTorchCompatible(isCompatible: boolean): void {
     this.torchAvailable$.next(isCompatible || false);

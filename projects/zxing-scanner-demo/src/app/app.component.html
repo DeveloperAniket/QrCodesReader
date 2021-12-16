@@ -1,6 +1,6 @@
 <div class="scanner-shell" [hidden]="!hasDevices">
 
-   
+
   <header>
     <mat-form-field appearance="fill">
       <mat-select [value]="deviceSelected" (valueChange)="onDeviceSelectChange($event)">
@@ -8,11 +8,14 @@
         <mat-option *ngFor="let device of availableDevices" [value]="device.deviceId">{{device.label}}</mat-option>
       </mat-select>
     </mat-form-field>
-   </header>
+  </header>
+  <div *ngIf="showScanner">
+    <zxing-scanner [enable]="showScanner" [torch]="torchEnabled" [device]="deviceCurrent"
+      (deviceChange)="onDeviceChange($event)" (scanSuccess)="onCodeResult($event)" [formats]="formatsEnabled"
+      [tryHarder]="tryHarder" (permissionResponse)="onHasPermission($event)" (camerasFound)="onCamerasFound($event)"
+      (torchCompatible)="onTorchCompatible($event)"></zxing-scanner>
 
-  <zxing-scanner [torch]="torchEnabled" [device]="deviceCurrent" (deviceChange)="onDeviceChange($event)" (scanSuccess)="onCodeResult($event)"
-    [formats]="formatsEnabled" [tryHarder]="tryHarder" (permissionResponse)="onHasPermission($event)"
-    (camerasFound)="onCamerasFound($event)" (torchCompatible)="onTorchCompatible($event)"></zxing-scanner>
+  </div>
 
   <section class="results" *ngIf="qrResultString">
     <div>
