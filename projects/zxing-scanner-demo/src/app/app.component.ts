@@ -26,16 +26,17 @@ export class AppComponent {
   hasDevices: boolean;
   hasPermission: boolean;
 
-  qrResultString: QrCodeModel;
+  qrResultValue: QrCodeModel
 
   torchEnabled = false;
   torchAvailable$ = new BehaviorSubject<boolean>(false);
   tryHarder = false;
 
-  constructor(private readonly _dialog: MatDialog) { }
+  constructor(private readonly _dialog: MatDialog) {
+  }
 
   clearResult(): void {
-    this.qrResultString = null;
+    this.qrResultValue = null;
     this.showScanner = true;
   }
 
@@ -47,7 +48,7 @@ export class AppComponent {
   onCodeResult(resultString: string) {
     let obj: QrCodeModel = JSON.parse('{ "myString": "string", "myNumber": 4 }');
     if (obj.Code && obj.Id && obj.Id !== 0) {
-      this.qrResultString = obj
+      this.qrResultValue = obj
       this.showScanner = false;
     }
   }

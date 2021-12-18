@@ -17,14 +17,14 @@
 
   </div>
 
-  <section class="results" *ngIf="qrResultString && qrResultString.Id !== 0">
+  <section class="results" *ngIf="qrResultValue && qrResultValue.Id !== 0">
     <!-- <div>
       <small>Result</small>
       <strong>{{ qrResultString }}</strong>
     </div>
     <button mat-icon-button (click)="clearResult()">&times;</button> -->
 
-    <app-qr-detail [data]=qrResultString></app-qr-detail>
+    <app-qr-detail [data]=qrResultValue></app-qr-detail>
   </section>
 
 </div>
