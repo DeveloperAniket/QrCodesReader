@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { BarcodeFormat } from '@zxing/library';
 import { BehaviorSubject } from 'rxjs';
+import { QrCodeModel } from './shared/model/qrcode.model';
 
 @Component({
   selector: 'app-root',
@@ -25,7 +26,7 @@ export class AppComponent {
   hasDevices: boolean;
   hasPermission: boolean;
 
-  qrResultString: string;
+  qrResultString: QrCodeModel;
 
   torchEnabled = false;
   torchAvailable$ = new BehaviorSubject<boolean>(false);
@@ -44,9 +45,9 @@ export class AppComponent {
   }
 
   onCodeResult(resultString: string) {
-    console.log(JSON.parse(resultString));
-    if (resultString) {
-      this.qrResultString = resultString
+    let obj: QrCodeModel = JSON.parse('{ "myString": "string", "myNumber": 4 }');
+    if (obj.Code && obj.Id && obj.Id !== 0) {
+      this.qrResultString = obj
       this.showScanner = false;
     }
   }

@@ -1,4 +1,4 @@
-export class name {
+export class QrCodeModel {
     public Id: number;
     public Code: string;
     public IsRedeemed: Boolean;

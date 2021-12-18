@@ -5,6 +5,7 @@ import { environment } from '../environments/environment';
 import { AppUiModule } from './app-ui.module';
 import { AppComponent } from './app.component';
 import { ZXingScannerModule } from '@zxing/ngx-scanner';
+import { QrDetailComponent } from './QR-Details/qr-detail/qr-detail.component';
 
 @NgModule({
   imports: [
@@ -17,7 +18,7 @@ import { ZXingScannerModule } from '@zxing/ngx-scanner';
     AppUiModule,
 
   ],
-  declarations: [AppComponent],
+  declarations: [AppComponent, QrDetailComponent],
   bootstrap: [AppComponent],
   entryComponents: []
 })
