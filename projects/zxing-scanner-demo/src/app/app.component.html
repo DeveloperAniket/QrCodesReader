@@ -18,13 +18,14 @@
   </div>
 
   <section class="results">
-    <div>
+    <!-- <div>
       <small>Result</small>
       <strong>{{ devString }}</strong>
     </div>
     <button mat-icon-button (click)="clearResult()">&times;</button>
-
-    <app-qr-detail [data]="qrResultValue" *ngIf="qrResultValue && qrResultValue.Id !== 0"></app-qr-detail>
+ -->
+    <app-qr-detail *ngIf="qrResultValue && qrResultValue.Id !== 0" (backToScan)="clearResult()" [data]="qrResultValue">
+    </app-qr-detail>
   </section>
 
 </div>
