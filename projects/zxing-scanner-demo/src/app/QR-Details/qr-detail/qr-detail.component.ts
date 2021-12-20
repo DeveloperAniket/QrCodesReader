@@ -49,7 +49,6 @@ export class QrDetailComponent implements OnInit, OnChanges {
         this.loading = false;
       },
       () => {                                   //complete() callback
-        console.error('Request completed')
         this.loading = false;
       })
   }
