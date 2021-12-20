@@ -1,5 +1,4 @@
-import { Component } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { Component } from '@angular/core'; 
 import { BarcodeFormat } from '@zxing/library';
 import { BehaviorSubject } from 'rxjs';
 import { QrCodeModel } from './shared/model/qrcode.model';
@@ -32,7 +31,10 @@ export class AppComponent {
   torchAvailable$ = new BehaviorSubject<boolean>(false);
   tryHarder = false;
 
-  constructor(private readonly _dialog: MatDialog) {
+  constructor() {
+    setTimeout(() => {
+      this.onCodeResult('{"Id":3, "Code":"e4a0c3a9-41fe-41a9-b9fb-ea8f5d38ab9a"}') 
+    }, 1000);
   }
 
   clearResult(): void {
@@ -46,7 +48,7 @@ export class AppComponent {
   }
 
   onCodeResult(resultString: string) {
-    let obj: QrCodeModel = JSON.parse('{ "myString": "string", "myNumber": 4 }');
+    let obj: QrCodeModel = JSON.parse(resultString);
     if (obj.Code && obj.Id && obj.Id !== 0) {
       this.qrResultValue = obj
       this.showScanner = false;

@@ -1,10 +1,14 @@
-<h1 *ngIf="data.IsRedeemed" style="color: red;">{{informationText}}</h1>
-<h1 *ngIf="!data.IsRedeemed" style="color: green;">{{informationText}}</h1>
-
-<div class="example-button-row" *ngIf="!data.IsDeleted">
-    <button *ngIf="!data.IsRedeemed && !data.IsIssued" mat-raised-button color="accent" (click)="onActive()">Make QR Code Actice</button>
-
-    <div style="padding: 10px;"></div>
-
-    <button *ngIf="!data.IsRedeemed" mat-raised-button color="primary" (click)="onRedeem()">Make QR Code Redeem</button>
+<div *ngIf="qrCodeDetail">
+    <h1 *ngIf="qrCodeDetail.IsRedeemed" style="color: red;">{{informationText}}</h1>
+    <h1 *ngIf="!qrCodeDetail.IsRedeemed" style="color: green;">{{informationText}}</h1>
+    
+    <div class="example-button-row" *ngIf="!qrCodeDetail.IsDeleted">
+        <button *ngIf="!qrCodeDetail.IsRedeemed && !qrCodeDetail.IsIssued" mat-raised-button color="accent" (click)="onActive()">Make QR Code Actice</button>
+    
+        <div style="padding: 10px;"></div>
+    
+        <button *ngIf="!qrCodeDetail.IsRedeemed" mat-raised-button color="primary" (click)="onRedeem()">Make QR Code Redeem</button>
+    </div>
+    
+    <div *ngIf="loading">loading...</div>  
 </div>
