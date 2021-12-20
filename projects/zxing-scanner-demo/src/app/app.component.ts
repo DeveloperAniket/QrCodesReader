@@ -51,11 +51,20 @@ export class AppComponent {
   onCodeResult(resultString: string) {
     console.log(resultString)
     this.devString = resultString;
-    let obj: QrCodeModel = JSON.parse(resultString);
+    const obj = this.parseResultString(resultString);
     if (obj.Code && obj.Id && obj.Id !== 0) {
       this.qrResultValue = obj
       this.showScanner = false;
     }
+  }
+  private parseResultString(resultString: string) {
+    const obj = JSON.parse(resultString);
+
+    const res = new QrCodeModel();
+    res.Id = obj.id;
+    res.Code = obj.code;
+
+    return res;
   }
 
   onDeviceSelectChange(selected: string) {
