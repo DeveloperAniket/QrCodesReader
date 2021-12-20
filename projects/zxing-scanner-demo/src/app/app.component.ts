@@ -1,4 +1,4 @@
-import { Component } from '@angular/core'; 
+import { Component } from '@angular/core';
 import { BarcodeFormat } from '@zxing/library';
 import { BehaviorSubject } from 'rxjs';
 import { QrCodeModel } from './shared/model/qrcode.model';
@@ -14,6 +14,7 @@ export class AppComponent {
   deviceCurrent: MediaDeviceInfo;
   deviceSelected: string;
   showScanner = true;
+  devString: string;
 
   formatsEnabled: BarcodeFormat[] = [
     BarcodeFormat.CODE_128,
@@ -48,6 +49,8 @@ export class AppComponent {
   }
 
   onCodeResult(resultString: string) {
+    console.log(resultString)
+    this.devString = resultString;
     let obj: QrCodeModel = JSON.parse(resultString);
     if (obj.Code && obj.Id && obj.Id !== 0) {
       this.qrResultValue = obj
