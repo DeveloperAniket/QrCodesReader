@@ -24,7 +24,7 @@
     </div>
     <button mat-icon-button (click)="clearResult()">&times;</button>
 
-    <app-qr-detail [data]=qrResultValue *ngIf="qrResultValue && qrResultValue.Id !== 0"></app-qr-detail>
+    <app-qr-detail [data]="qrResultValue" *ngIf="qrResultValue && qrResultValue.Id !== 0"></app-qr-detail>
   </section>
 
 </div>
