@@ -35,6 +35,7 @@ export class QrApiService {
       res.Code = string["code"];
       res.IsDeleted = string["isDeleted"];
       res.IsIssued = string["isIssued"];
+      res.FullName = string["fullName"];
       res.IsRedeemed = string["isRedeemed"];
       res.RedeedemDate = string["redeedemDate"];
       res.Created = string["created"];

@@ -1,6 +1,8 @@
 <div *ngIf="qrCodeDetail">
-    <h1 *ngIf="qrCodeDetail.IsRedeemed" style="color: red;">{{informationText}} - ID : {{qrCodeIdDisplay}}</h1>
-    <h1 *ngIf="!qrCodeDetail.IsRedeemed" style="color: green;">{{informationText}} - ID : {{qrCodeIdDisplay}}</h1>
+    <h1 *ngIf="qrCodeDetail.IsRedeemed" style="color: red;">{{informationText}} - ID : {{qrCodeIdDisplay}} , Name :
+        {{qrCodeDetail.FullName}}</h1>
+    <h1 *ngIf="!qrCodeDetail.IsRedeemed" style="color: green;">{{informationText}} - ID : {{qrCodeIdDisplay}} ,Name :
+        {{qrCodeDetail.FullName}}</h1>
 
     <div class="example-button-row" *ngIf="!qrCodeDetail.IsDeleted">
         <div class="activeSection" *ngIf="!qrCodeDetail.IsRedeemed && !qrCodeDetail.IsIssued">

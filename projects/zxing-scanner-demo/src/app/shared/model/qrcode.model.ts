@@ -6,4 +6,5 @@ export class QrCodeModel {
     public IsDeleted: Boolean;
     public Created: Date;
     public RedeedemDate: Date;
+    public FullName: string = '';
 }
