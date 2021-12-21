@@ -17,8 +17,8 @@ export class QrApiService {
       .pipe(map(result => this.mapQrCodeModel(result)));
 
   }
-  markQRcodeIssue(code: string): Observable<QrCodeModel> {
-    return this.http.get(this.baseURL + 'issue/' + code)
+  markQRcodeIssue(code: string, name: string): Observable<QrCodeModel> {
+    return this.http.get(this.baseURL + 'issue/' + code + '/' + name)
       .pipe(map(result => this.mapQrCodeModel(result)));
 
   }

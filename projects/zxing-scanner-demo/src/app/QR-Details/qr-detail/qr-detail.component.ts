@@ -9,12 +9,14 @@ import { Output, EventEmitter } from '@angular/core';
   styleUrls: ['./qr-detail.component.css']
 })
 export class QrDetailComponent implements OnInit, OnChanges {
-
+  qrCodeIdDisplay = 0;
   @Input() data: QrCodeModel;
   qrCodeDetail: QrCodeModel;
   informationText: String = "QR code found";
   loading: boolean = false;
   @Output() backToScan = new EventEmitter<boolean>();
+  value = '';
+  validationMessage = '';
   constructor(private _qrApiService: QrApiService) { }
 
   ngOnInit(): void {
@@ -27,6 +29,11 @@ export class QrDetailComponent implements OnInit, OnChanges {
     }
   }
   private populateInfoMessage() {
+    this.qrCodeIdDisplay = this.qrCodeDetail.Id;
+    // If Id value is greater than 5 then Id value will be (Id -2). As till 5 id is dev id.. 
+    if (this.qrCodeDetail && this.qrCodeDetail.Id && this.qrCodeDetail.Id > 5) {
+      this.qrCodeIdDisplay = this.qrCodeDetail.Id - 2;
+    }
     if (this.qrCodeDetail && this.qrCodeDetail.IsDeleted) {
       this.informationText = "Qr code deleted";
     } else if (this.qrCodeDetail && this.qrCodeDetail.IsRedeemed) {
@@ -75,8 +82,13 @@ export class QrDetailComponent implements OnInit, OnChanges {
       });
   }
   public onActive() {
+    if (!this.value || this.value === '') {
+      this.validationMessage = 'Insert Name';
+      return;
+    }
+
     this.loading = true;
-    this._qrApiService.markQRcodeIssue(this.data.Code).subscribe((response) => {                           //next() callback
+    this._qrApiService.markQRcodeIssue(this.data.Code, this.value).subscribe((response) => {                           //next() callback
       console.log(response)
       if (response) {
         console.log(response)

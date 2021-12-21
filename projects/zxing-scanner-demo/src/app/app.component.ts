@@ -34,7 +34,7 @@ export class AppComponent {
 
   constructor() {
     // setTimeout(() => {
-    //   this.onCodeResult('{"Id":3, "Code":"e4a0c3a9-41fe-41a9-b9fb-ea8f5d38ab9a"}') 
+    //   this.onCodeResult('{"id":3, "code":"e4a0c3a9-41fe-41a9-b9fb-ea8f5d38ab9a"}') 
     // }, 1000);
   }
 
