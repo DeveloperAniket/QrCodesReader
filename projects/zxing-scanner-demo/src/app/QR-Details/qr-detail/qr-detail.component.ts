@@ -32,7 +32,7 @@ export class QrDetailComponent implements OnInit, OnChanges {
     this.qrCodeIdDisplay = this.qrCodeDetail.Id;
     // If Id value is greater than 5 then Id value will be (Id -2). As till 5 id is dev id.. 
     if (this.qrCodeDetail && this.qrCodeDetail.Id && this.qrCodeDetail.Id > 5) {
-      this.qrCodeIdDisplay = this.qrCodeDetail.Id - 2;
+      this.qrCodeIdDisplay = this.qrCodeDetail.Id - 5;
     }
     if (this.qrCodeDetail && this.qrCodeDetail.IsDeleted) {
       this.informationText = "Qr code deleted";
